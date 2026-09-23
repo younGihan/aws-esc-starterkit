@@ -1,6 +1,8 @@
 locals {
   project_identifier = "${var.project_name}-${var.landing_zone}"
 
+  workspace_owners = [for user in var.users : user.username if contains(user.roles, "Workspace Owner")]
+
   # Workspace owners and managers administer the project, workspace members get user access.
   project_roles = {
     for user in var.users : user.username => (
@@ -17,6 +19,14 @@ resource "meshstack_project" "this" {
 
   spec = {
     display_name = "${var.project_name} (${upper(var.landing_zone)})"
+
+    # Mandatory project tags of this meshStack.
+    tags = {
+      projectOwner         = [join(", ", local.workspace_owners)]
+      environment          = [var.landing_zone]
+      LandingZoneClearance = ["cloud-native"]
+      Schutzbedarf         = ["Grundschutz-normal"]
+    }
   }
 }
 
