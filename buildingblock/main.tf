@@ -28,6 +28,13 @@ resource "meshstack_project" "this" {
       Schutzbedarf         = ["Grundschutz-normal"]
     }
   }
+
+  lifecycle {
+    precondition {
+      condition     = length(local.workspace_owners) > 0
+      error_message = "Workspace ${var.workspace_identifier} has no Workspace Owner to set as the projectOwner tag."
+    }
+  }
 }
 
 resource "meshstack_project_user_binding" "this" {
