@@ -1,0 +1,35 @@
+# Terraform / OpenTofu working directories
+**/.terraform/*
+.terragrunt-cache/
+
+# State files contain resource details and secrets
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Variable files may contain sensitive values; keep the examples
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Local overrides
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI configuration and saved plans
+.terraformrc
+terraform.rc
+*.tfplan
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# custom
+provider.tf
