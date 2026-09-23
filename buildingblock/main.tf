@@ -6,7 +6,7 @@ locals {
   # Workspace owners and managers administer the project, workspace members get user access.
   project_roles = {
     for user in var.users : user.username => (
-      length(setintersection(user.roles, ["Workspace Owner", "Workspace Manager"])) > 0 ? "admin" : "user"
+      length(setintersection(user.roles, ["Workspace Owner", "Workspace Manager"])) > 0 ? "Project Admin" : "Project User"
     )
   }
 }
