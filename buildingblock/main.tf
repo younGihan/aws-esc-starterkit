@@ -24,7 +24,8 @@ resource "meshstack_project_user_binding" "this" {
   for_each = local.project_roles
 
   metadata = {
-    name = "${substr(var.workspace_identifier, 0, 18)}.${substr(local.project_identifier, 0, 18)}.${each.key}"
+    # Binding names are limited to 45 characters and must be unique across meshStack, so hash the full triple.
+    name = substr(sha256("${var.workspace_identifier}.${local.project_identifier}.${each.key}"), 0, 40)
   }
 
   role_ref = {
