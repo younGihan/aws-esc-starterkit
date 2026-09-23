@@ -30,6 +30,3 @@ terraform.rc
 .DS_Store
 .idea/
 .vscode/
-
-# custom
-provider.tf

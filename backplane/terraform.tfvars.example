@@ -1,0 +1,23 @@
+# Identifier of the meshStack workspace that owns the building block definition.
+owning_workspace_identifier = "aws-platformteam"
+
+# UUID of the AWS ESC meshPlatform (see platform-integration).
+platform_uuid = "8ff202b9-227a-4475-925f-cc99e5f00118"
+
+# Prefix of the landing zone identifiers created by platform-integration, e.g. 'aws-esc' for 'aws-esc-dev'.
+landing_zone_prefix = "aws-esc"
+
+# Git repository URL containing the building block Terraform code.
+repository_url = "https://github.com/younGihan/aws-esc-starterkit.git"
+
+# Path to the building block Terraform code within the repository.
+repository_path = "aws-esc-starterkit/buildingblock"
+
+# Git branch, tag or commit of the building block code.
+ref_name = "main"
+
+# Terraform/OpenTofu version the building block runner uses.
+terraform_version = "1.9.0"
+
+# Keep the building block definition version as a draft. Set to false to release it.
+draft = true
